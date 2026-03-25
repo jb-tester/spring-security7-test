@@ -30,9 +30,11 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/registered/protected/**").access(new WebExpressionAuthorizationManager("hasRole('ADMIN') || hasRole('USER')"))
                         .requestMatchers("/registered/secured/**").access(new WebExpressionAuthorizationManager("hasRole('ADMIN') && hasRole('USER')"))
-                       // .requestMatchers(antMatcher("/user/{uid}").access(new WebExpressionAuthorizationManager("@secutityUtil.checkUser(authentication,#uid)")))
-                        //.requestMatchers(antMatcher("/api/user/**")).hasRole("USER")
+                        .requestMatchers("/{*var}/master").hasRole("MASTER")  // matches both /foo/master and /bar/test/master
                         .requestMatchers("/registered/**").not().hasRole("GUEST")
+                        //.requestMatchers("/registered/**/test").not().hasRole("GUEST")  // invalid
+                        //.requestMatchers("/{*var}/test/**").hasRole("MASTER") // invalid
+                        //.requestMatchers("/bar/{*var}/master").hasRole("MASTER") // invalid
                         .requestMatchers("/registered/**").authenticated()
                         .requestMatchers(request -> request.getRequestURI().startsWith("/user/")).hasAuthority("ROLE_USER")
                         .requestMatchers(HttpMethod.POST, "/user/test1").hasRole( "USER")
@@ -65,6 +67,6 @@ public class SecurityConfig {
                 .password("guest")
                 .roles("GUEST")
                 .build();
-        return new InMemoryUserDetailsManager(user, admin, guest);
+        return new InMemoryUserDetailsManager(user, admin, guest, master, superuser);
     }
 }

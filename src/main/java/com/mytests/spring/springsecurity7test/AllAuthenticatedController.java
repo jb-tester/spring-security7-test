@@ -13,8 +13,18 @@ public class AllAuthenticatedController {
         return ResponseEntity.ok("foo");
     }
 
+    @GetMapping("/foo/master")
+    public ResponseEntity<String> fooMaster() {
+        return ResponseEntity.ok("foo master");
+    }
+
     @GetMapping("/bar")
     public ResponseEntity<String> bar() {
         return ResponseEntity.ok("bar");
+    }
+
+    @GetMapping("/bar/test/master")
+    public ResponseEntity<String> barMaster() {
+        return ResponseEntity.ok("bar master");
     }
 }

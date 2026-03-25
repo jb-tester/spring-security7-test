@@ -33,3 +33,11 @@ Authorization: Basic {{username}} {{password}}
 GET http://localhost:8080/foo
 Authorization: Basic {{username}} {{password}}
 ###
+# @no-cookie-jar
+GET http://localhost:8080/bar/test/master
+Authorization: Basic {{username}} {{password}}
+###
+# @no-cookie-jar
+GET http://localhost:8080/foo/master
+Authorization: Basic {{username}} {{password}}
+###

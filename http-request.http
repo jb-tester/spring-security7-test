@@ -1,0 +1,35 @@
+###
+GET http://localhost:8080/
+###
+GET http://localhost:8080/home
+###
+GET http://localhost:8080/admin
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/admin/test1
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/registered
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/registered/test1
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/registered/test2
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/user
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/user/test1
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/user/test2
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/bar
+Authorization: Basic {{username}} {{password}}
+###
+GET http://localhost:8080/foo
+Authorization: Basic {{username}} {{password}}
+###

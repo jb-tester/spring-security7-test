@@ -4,24 +4,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Objects;
 
 
 @RestController
-public class AllAuthenticatedController {
-    @GetMapping("/foo")
-    public ResponseEntity<String> foo(@CurrentSecurityContext SecurityContext context) {
-        String details = Objects.requireNonNull(context.getAuthentication()).toString();
-        return ResponseEntity.ok("foo: " + details);
-    }
+@RequestMapping("/")
+public class MasterController {
 
-    @GetMapping("/bar")
-    public ResponseEntity<String> bar(@CurrentSecurityContext SecurityContext context) {
+    @GetMapping("/foo/master")
+    public ResponseEntity<String> fooMaster(@CurrentSecurityContext SecurityContext context) {
         String details = Objects.requireNonNull(context.getAuthentication()).toString();
-        return ResponseEntity.ok("bar: " + details);
+        return ResponseEntity.ok("foo master: " + details);
     }
-
+    @GetMapping("/bar/test/master")
+    public ResponseEntity<String> barMaster(@CurrentSecurityContext SecurityContext context) {
+        String details = Objects.requireNonNull(context.getAuthentication()).toString();
+        return ResponseEntity.ok("bar master: " + details);
+    }
 }

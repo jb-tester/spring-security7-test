@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/home").permitAll()
+                        .requestMatchers("/anonymous/**").anonymous()
                         .requestMatchers(HttpMethod.POST).hasAnyRole( "ADMIN", "USER")
                         .requestMatchers(regexMatcher("/admin/regex(\\d)*")).hasRole("MASTER") // regexp is not injected
                         .requestMatchers("/admin/**").hasRole("ADMIN")
